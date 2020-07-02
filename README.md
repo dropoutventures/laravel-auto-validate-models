@@ -108,6 +108,16 @@ public function getCreatingRulesArray()
 
 In this case, the event is `creating` so the method name will be `getCreatingRulesArray()`.
 
+### Disable validation
+
+If you'd like to disable validation for a single model, you can use the `disableAutomaticValidation()` method.
+
+```php
+$post->disableAutomaticValidation()->save();
+```
+
+This method returns the model instance so you can chain on methods as you normally would.
+
 ## Security
 
 If you discover any security related issues, please email security@ryangjchandler.co.uk instead of using the issue tracker.
