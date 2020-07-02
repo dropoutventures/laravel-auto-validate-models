@@ -83,6 +83,31 @@ class Post extends Model
 }
 ```
 
+### Changing the rules for each event
+
+To have different rules for each event, you can use both `static` properties or methods to define the array of rules.
+
+**Static properties**
+
+Prepend the event name to the property name:
+
+```php
+protected static $creatingRules = [];
+```
+
+**Rules method**
+
+Use a similar pattern to static properties by adding the `ucfirst()` equivalent event name like so:
+
+```php
+public function getCreatingRulesArray()
+{
+    return [...];
+}
+```
+
+In this case, the event is `creating` so the method name will be `getCreatingRulesArray()`.
+
 ## Security
 
 If you discover any security related issues, please email security@ryangjchandler.co.uk instead of using the issue tracker.
