@@ -1,0 +1,34 @@
+{
+    "name": "ryangjchandler/laravel-auto-validate-models",
+    "description": "",
+    "authors": [
+        {
+            "name": "Ryan Chandler",
+            "email": "support@ryangjchandler.co.uk",
+            "homepage": "https://ryangjchandler.co.uk",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "illuminate/support": "^6.0 || ^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "RyanChandler\\AutoValidateModels\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "optimize-autoloader": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RyanChandler\\AutoValidateModels\\AutoValidateModelsServiceProvider"
+            ]
+        }
+    }
+}
