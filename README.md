@@ -58,6 +58,31 @@ class Post extends Model
 
 This will perform the validating when using the `Model::create()`, `Model::update()` or `Model::save()` methods.
 
+### Dynamic rules
+
+If you want to use a model property during validation, for example when defining unique rules, you can use a `getRulesArray()` method instead.
+
+```php
+class Post extends Model
+{
+    use AutoValidates;
+
+    protected static $validationEvents = [
+        'creating', 'updating', 'saving',
+    ];
+
+    public function getRulesArray(Post $post): array
+    {
+        return [
+            'title' => [
+                'required',
+                Rule::unique('posts')->ignore($post->id),
+            ]
+        ];
+    }
+}
+```
+
 ## Security
 
 If you discover any security related issues, please email security@ryangjchandler.co.uk instead of using the issue tracker.
