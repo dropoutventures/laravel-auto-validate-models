@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Validator;
 
 trait AutoValidates
 {
+    protected $disableAutomaticValidation = false;
+
     public static function bootAutoValidates()
     {
         $events = static::$validationEvents ?: [];
@@ -22,6 +24,10 @@ trait AutoValidates
         [$property, $method] = static::getRulesPropAndMethodNameForEvent($event);
 
         return function ($model) use ($property, $method) {
+            if ($model->disableAutomaticValidation) {
+                return;
+            }
+
             if (method_exists($model, $method)) {
                 $rules = $model->{$method}($model);
             } elseif (method_exists($model, 'getRulesArray')) {
@@ -43,5 +49,12 @@ trait AutoValidates
     protected static function getRulesPropAndMethodNameForEvent(string $event)
     {
         return ["{$event}Rules", 'get'.ucfirst($event).'RulesArray'];
+    }
+
+    public function disableAutomaticValidation(bool $disable = true)
+    {
+        $this->disableAutomaticValidation = $disable;
+
+        return $this;
     }
 }
