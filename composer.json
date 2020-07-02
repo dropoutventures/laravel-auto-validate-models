@@ -1,6 +1,7 @@
 {
     "name": "ryangjchandler/laravel-auto-validate-models",
-    "description": "",
+    "description": "A small package to auto-validate your Laravel models.",
+    "license": "MIT",
     "authors": [
         {
             "name": "Ryan Chandler",
