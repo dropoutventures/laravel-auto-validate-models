@@ -12,9 +12,6 @@
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "require": {
-        "illuminate/support": "^6.0 || ^7.0"
-    },
     "autoload": {
         "psr-4": {
             "RyanChandler\\AutoValidateModels\\": "src/"
